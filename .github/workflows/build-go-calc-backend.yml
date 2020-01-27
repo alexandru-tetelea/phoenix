@@ -23,7 +23,8 @@ jobs:
         cd apps/go-calc-backend
         echo "Docker login"
         echo "Running docker build"
-        docker build .  --tag $ACR_NAME/go-calc-backend:${{ github.sha }} $ACR_NAME/go-calc-backend:latest
+        docker build .  --tag $ACR_NAME/go-calc-backend:${{ github.sha }} 
+        docker tag $ACR_NAME/go-calc-backend:${{ github.sha }} $ACR_NAME/go-calc-backend:latest
         echo "Pushing image"
         docker push $ACR_NAME/go-calc-backend:${{ github.sha }}
         docker push $ACR_NAME/go-calc-backend:latest

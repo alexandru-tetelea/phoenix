@@ -20,7 +20,8 @@ jobs:
         cd apps/js-calc-frontend
         ls -l
         echo "Running docker build"
-        docker build . --tag $ACR_NAME/js-calc-frontend:${{ github.sha }} $ACR_NAME/js-calc-frontend:latest
+        docker build . --tag $ACR_NAME/js-calc-frontend:${{ github.sha }}
+        docker tag $ACR_NAME/js-calc-frontend:${{ github.sha }} $ACR_NAME/js-calc-frontend:latest
         echo "Pushing image"
         docker push $ACR_NAME/js-calc-frontend:${{ github.sha }}
         docker push $ACR_NAME/js-calc-frontend:latest
