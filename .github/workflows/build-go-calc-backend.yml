@@ -15,12 +15,13 @@ jobs:
         login-server: ${{ secrets.ACR_NAME }}
         username: ${{ secrets.ACR_USERNAME }}
         password: ${{ secrets.ACR_PASSWORD }}
+    - name: Build the Docker image
       run: |
         ls -l
         cd apps/go-calc-backend
         echo "Docker login"
         echo "Running docker build"
-        docker build .  --tag denniszielke/go-calc-backend:latest
+        docker build .  --tag $ACR_NAME/go-calc-backend:${{ github.sha }}
         echo "Pushing image"
-        docker push denniszielke/go-calc-backend:latest
+        docker push $ACR_NAME/go-calc-backend:${{ github.sha }}
         echo "Done"
