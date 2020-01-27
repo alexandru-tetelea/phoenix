@@ -13,6 +13,8 @@ jobs:
         username: ${{ secrets.ACR_USERNAME }}
         password: ${{ secrets.ACR_PASSWORD }}
     - name: Build the Docker image
+      env:
+        ACR_NAME: ${{ secrets.ACR_NAME }}
       run: |
         ls -l
         cd apps/js-calc-frontend
