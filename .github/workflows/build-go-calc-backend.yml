@@ -26,4 +26,5 @@ jobs:
         docker build .  --tag $ACR_NAME/go-calc-backend:${{ github.sha }}
         echo "Pushing image"
         docker push $ACR_NAME/go-calc-backend:${{ github.sha }}
+        docker push $ACR_NAME/go-calc-backend:latest
         echo "Done"
