@@ -15,6 +15,7 @@ jobs:
         login-server: ${{ secrets.ACR_NAME }}
         username: ${{ secrets.ACR_USERNAME }}
         password: ${{ secrets.ACR_PASSWORD }}
+    - name: Build the Docker image
       run: |
         ls -l
         cd apps/js-calc-backend
