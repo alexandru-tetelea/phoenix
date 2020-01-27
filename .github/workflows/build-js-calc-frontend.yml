@@ -15,12 +15,13 @@ jobs:
         login-server: ${{ secrets.ACR_NAME }}
         username: ${{ secrets.ACR_USERNAME }}
         password: ${{ secrets.ACR_PASSWORD }}
+    - name: Build the Docker image
       run: |
         ls -l
         cd apps/js-calc-frontend
         ls -l
         echo "Running docker build"
-        docker build . --tag denniszielke/js-calc-frontend:latest
+        docker build . --tag $ACR_NAME/js-calc-frontend:${{ github.sha }}
         echo "Pushing image"
-        docker push denniszielke/js-calc-frontend:latest
+        docker push $ACR_NAME/js-calc-frontend:${{ github.sha }}
         echo "Done"
